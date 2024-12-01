@@ -23,7 +23,7 @@ uv.lock
 
 # Test input/output files
 src/**/test_input.txt
-src/**/description.md
+# src/**/description.md
 
 # Logs and other runtime files
 *.log
