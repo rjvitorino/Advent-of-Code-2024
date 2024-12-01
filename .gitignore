@@ -12,6 +12,7 @@ __pycache__/
 .env
 env/
 venv/
+uv.lock
 
 # VS Code settings
 .vscode/
@@ -73,3 +74,6 @@ docker-compose.override.yml
 
 # Ignore downloaded inputs if needed
 src/**/input.txt
+
+# Helper for GPTs (:
+PROMPT.md
