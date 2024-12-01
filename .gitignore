@@ -1,0 +1,75 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+.env/
+.venv/
+.env
+env/
+venv/
+
+# VS Code settings
+.vscode/
+
+# Pytest cache
+.pytest_cache/
+*.pytest_cache
+
+# Test input/output files
+src/**/test_input.txt
+src/**/description.md
+
+# Logs and other runtime files
+*.log
+*.out
+*.pid
+*.gz
+
+# Python package files
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Black and Ruff
+.black/
+.ruff_cache/
+
+# Coverage reports
+.coverage
+coverage.xml
+htmlcov/
+*.cover
+.cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Other temporary files
+*.tmp
+*.swp
+*.bak
+*.old
+*.orig
+
+# IDE-specific files
+.idea/
+*.iml
+
+# Docker files
+*.env.docker
+docker-compose.override.yml
+
+# Ignore downloaded inputs if needed
+src/**/input.txt
