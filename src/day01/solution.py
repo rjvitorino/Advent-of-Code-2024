@@ -1,3 +1,4 @@
+from collections import Counter
 from pathlib import Path
 from shared.utils import parse_input
 
@@ -36,9 +37,29 @@ def calculate_total_distance(left, right):
     return sum(abs(a - b) for a, b in zip(left, right))
 
 
+def calculate_similarity_score(left, right):
+    """
+    Calculates the similarity score for Part 2.
+
+    Args:
+        left (List[int]): The first list of integers.
+        right (List[int]): The second list of integers.
+
+    Returns:
+        int: The similarity score.
+    """
+    right_counts = Counter(right)
+    return sum(num * right_counts[num] for num in left)
+
+
 def part1(data):
     left, right = parse_location_ids(data)
     return calculate_total_distance(left, right)
+
+
+def part2(data):
+    left, right = parse_location_ids(data)
+    return calculate_similarity_score(left, right)
 
 
 if __name__ == "__main__":
@@ -49,3 +70,4 @@ if __name__ == "__main__":
         data = file.read().splitlines()
 
     print(f"Part 1: {part1(data)}")
+    print(f"Part 2: {part2(data)}")
