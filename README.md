@@ -1,4 +1,4 @@
-# Advent of Code 2024 - Python Setup
+# 🎅 Advent of Code 2024 - Python Setup 🐍
 
 Welcome to my **Advent of Code 2024** repository! This project is designed to streamline solving AoC puzzles using Python, focusing on **code reuse**, **automation**, and **testing**.
 
