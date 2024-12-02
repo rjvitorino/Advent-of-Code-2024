@@ -80,7 +80,7 @@ You can find this in your browser's cookies after logging into the AoC website.
 AOC_SESSION=your_session_cookie_here
 ```
 
-Alternatively, export the session variable in your shell:
+- Alternatively, export the session variable in your shell:
 
 ```bash
 export AOC_SESSION=your_session_cookie_here
@@ -107,7 +107,7 @@ This script performs the following:
 
 ---
 
-## How to Solve a Day
+## How to solve a day in the Advent of Code
 
 ### 1. **Write your solution**
 
@@ -268,15 +268,15 @@ neighbor_coords = neighbors(2, 2, include_diagonals=True)
 ## Developer Tips
 
 1. **Code Reusability**
-  * Place shared utility functions (e.g., parsing, math utilities) in src/shared/.
+    * Place shared utility functions (e.g., parsing, math utilities) in `src/shared/`.
 
 2. **Testing and Debugging**
-  * Use `pytest` for unit testing.
-  * Use `pdb` for debugging or add print statements for insights.
+    * Use `pytest` for unit testing.
+    * Use `pdb` for debugging or add print statements for insights.
 
 3. **Performance Optimization**
-  * Use `timeit` for benchmarking.
-  * Use `cProfile` for profiling bottlenecks.
+    * Use `timeit` for benchmarking.
+    * Use `cProfile` for profiling bottlenecks.
 
 ---
 
@@ -284,21 +284,21 @@ neighbor_coords = neighbors(2, 2, include_diagonals=True)
 
 1. **Daily Automation**
 
-* Set up automation using `cron` or `launchd` (see project docs) to run `download_input.py` and `generate_day.py` daily.
+  * Set up automation using `cron` or `launchd` (see project docs) to run `download_input.py` and `generate_day.py` daily.
 
 2. **Run Tests and Linting**
 
-* Automate testing and formatting with uv commands to ensure code quality:
+  * Automate testing and formatting with uv commands to ensure code quality:
 
-```bash
-uv tool run pytest
-uv tool run ruff check .
-uv tool run ruff format .
-```
+  ```bash
+  uv tool run pytest
+  uv tool run ruff check .
+  uv tool run ruff format .
+  ```
 
 3. **GitHub Actions**
 
-* Consider setting up CI/CD workflows to automate testing and deployment.
+  * Consider setting up CI/CD workflows to automate testing and other checks.
 
 ---
 
