@@ -1,40 +1,78 @@
 import os
 import requests
 from datetime import datetime
+from typing import Optional
+from bs4 import BeautifulSoup
+from markdownify import markdownify
+from dotenv import load_dotenv
 
-AOC_YEAR = 2024
-SESSION_COOKIE = os.getenv("AOC_SESSION")
-BASE_URL = f"https://adventofcode.com/{AOC_YEAR}/day"
+# Load environment variable(s) from .env
+load_dotenv()
+
+AOC_YEAR: int = 2024
+SESSION_COOKIE: Optional[str] = os.getenv("AOC_SESSION")
+BASE_URL: str = f"https://adventofcode.com/{AOC_YEAR}/day"
 
 
-def download_input(day):
+def download_input(day: int) -> None:
+    """
+    Downloads the input and description for a specific Advent of Code day.
+
+    Args:
+        day (int): The day of the Advent of Code challenge (1-25).
+
+    Raises:
+        ValueError: If the session cookie is not set.
+        HTTPError: If the HTTP request fails.
+    """
+    if not SESSION_COOKIE:
+        raise ValueError("AOC_SESSION environment variable is not set.")
+
     headers = {"Cookie": f"session={SESSION_COOKIE}"}
-    input_url = f"{BASE_URL}/{day}/input"
-    desc_url = f"{BASE_URL}/{day}"
+    input_url: str = f"{BASE_URL}/{day}/input"
+    desc_url: str = f"{BASE_URL}/{day}"
 
-    # Fetch input data
-    print(desc_url)
+    # Fetch input data from the website
+    print(f"Fetching input data from: {input_url}")
     response = requests.get(input_url, headers=headers)
     response.raise_for_status()
-    input_data = response.text
+    input_data: str = response.text
+
+    # Create day folder for the code
+    day_folder: str = f"src/day{day:02d}"
+    os.makedirs(day_folder, exist_ok=True)
 
     # Save input file
-    day_folder = f"src/day{day:02d}"
-    os.makedirs(day_folder, exist_ok=True)
-    with open(os.path.join(day_folder, "input.txt"), "w") as f:
+    input_path: str = os.path.join(day_folder, "input.txt")
+    with open(input_path, "w") as f:
         f.write(input_data)
 
-    # Optionally fetch description (part 1)
+    print(f"Input data saved to {input_path}.")
+
+    # Fetch and save html description
+    print(f"Fetching description from: {desc_url}")
     desc_response = requests.get(desc_url, headers=headers)
     desc_response.raise_for_status()
 
-    with open(os.path.join(day_folder, "description.md"), "w") as f:
-        f.write(desc_response.text)
+    # Extract <main> content from the HTML
+    soup = BeautifulSoup(desc_response.text, "html.parser")
+    main_content = soup.select_one("body > main")  # Select <main> inside <body>
+    if main_content is None:
+        raise ValueError("Could not find <main> content in the HTML.")
 
+    # Convert HTML to Markdown
+    markdown_content = markdownify(str(main_content))
+    print(markdown_content)
+
+    desc_path: str = os.path.join(day_folder, "description2.md")
+    with open(desc_path, "w") as f:
+        f.write(markdown_content)
+
+    print(f"Description saved to {desc_path}.")
     print(f"Downloaded data for Day {day}.")
 
 
 if __name__ == "__main__":
-    today = datetime.now()
-    day = today.day
+    today: datetime = datetime.now()
+    day: int = today.day
     download_input(day)
