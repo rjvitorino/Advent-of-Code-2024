@@ -4,6 +4,27 @@ Welcome to my **Advent of Code 2024** repository! This project is designed to st
 
 ---
 
+## Table of Contents
+
+- [Project Structure](#project-structure)
+- [Setup](#setup)
+  - [Install Dependencies](#1-install-dependencies)
+  - [Configure Advent of Code Session](#2-configure-advent-of-code-session)
+  - [Run Automation Scripts](#3-run-automation-scripts)
+- [How to Solve a Day](#how-to-solve-a-day)
+- [Tools and Techniques](#tools-and-techniques)
+  - [Data Structures and Utilities](#data-structures-and-utilities)
+  - [Algorithms](#algorithms)
+  - [Libraries](#libraries)
+  - [Templates](#templates)
+  - [Recommended Libraries for Future Exercises](#recommended-libraries-for-future-exercises)
+- [Developer Tips](#developer-tips)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+
 ## Project Structure
 
 ```yaml
@@ -88,7 +109,7 @@ This script performs the following:
 
 ## How to Solve a Day
 
-1. **Write your solution**
+### 1. **Write your solution**
 
   - Implement the solution in `src/dayXX/solution.py`, using **type hints** and reusable **utilities** to ensure clarity and consistency.
   - Type hints help catch bugs early and provide better IDE support.
@@ -102,7 +123,7 @@ This script performs the following:
       pass
     ```
 
-2. **Write your tests**
+### 2. **Write your tests**
 
   - Create test cases in `src/dayXX/test_solution.py`, using type hints and the provided template.
   - Example:
@@ -114,7 +135,7 @@ This script performs the following:
         assert part1(example_input) == expected_result
     ```
 
-3. **Run and validate your code**
+### 3. **Run and validate your code**
 
   - Test your solution with `pytest`:
 
