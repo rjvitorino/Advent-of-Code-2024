@@ -19,10 +19,10 @@ advent_of_code/
 │   └── shared/               # Shared utilities and data classes
 ├── templates/                # Template for new days
 │   ├── day_template/
-│   │   ├── input.txt
-│   │   ├── test_input.txt
-│   │   ├── solution.py
-│   │   ├── test_solution.py
+│   │   ├── input.txt         # Empty file to store the input from the website
+│   │   ├── test_input.txt    # Empty file to store a simplified input example
+│   │   ├── solution.py       # Starter solution with type hints and structure
+│   │   ├── test_solution.py  # Starter test suite with type hints
 ├── automation/               # Automation scripts
 │   ├── download_input.py     # Downloads input and exercise description
 │   ├── generate_day.py       # Generates day structure
@@ -51,11 +51,15 @@ This will install all necessary libraries, including:
 
 ### 2. **Configure Advent of Code Session**
 
-```bash
+- Set your Advent of Code session cookie for downloading inputs and descriptions. 
+You can find this in your browser's cookies after logging into the AoC website.
+- Ensure the `.env` file is placed in the **root directory** of the project, where the `automation/` folder is located with the following content:
+
+```yaml
 AOC_SESSION=your_session_cookie_here
 ```
 
-2. Alternatively, set it in your shell:
+Alternatively, export the session variable in your shell:
 
 ```bash
 export AOC_SESSION=your_session_cookie_here
@@ -75,6 +79,10 @@ uv run python automation/generate_day.py
 uv run python automation/download_input.py
 ```
 
+This script performs the following:
+
+* Downloads the puzzle input and saves it as `input.txt`.
+* Extracts the `<main>` content from the puzzle description and saves it as `description.md`, converted into the Markdown format.
 
 ---
 
@@ -82,39 +90,55 @@ uv run python automation/download_input.py
 
 1. **Write your solution**
 
-Implement the solution in `src/dayXX/solution.py`.
+  - Implement the solution in `src/dayXX/solution.py`, using **type hints** and reusable **utilities** to ensure clarity and consistency.
+  - Type hints help catch bugs early and provide better IDE support.
+  - Example:
 
-2. **Test your code**
+    ```python
+    def part1(data: List[str]) -> int:
+      pass
 
-Use  `pytest` to run the tests:
+    def part2(data: List[str]) -> int:
+      pass
+    ```
 
-```bash
-uv tool run pytest
-```
+2. **Write your tests**
 
-3. **Check linting**
+  - Create test cases in `src/dayXX/test_solution.py`, using type hints and the provided template.
+  - Example:
 
-Ensure the code adheres to standards:
+    ```python
+    def test_part1() -> None:
+        example_input: List[str] = ["test input"]
+        expected_result: int = 42
+        assert part1(example_input) == expected_result
+    ```
 
-```bash
-uv tool run ruff check .
-```
+3. **Run and validate your code**
 
-4. **Format the code**
+  - Test your solution with `pytest`:
 
-Format the code automatically:
+    ```bash
+    uv tool run pytest
+    ```
 
-```bash
-uv tool run ruff format .
-```
+  - Check linting with `ruff`:
+    
+    ```bash
+    uv tool run ruff check .
+    ```
+  
+  - Format the code with `ruff`:
+    
+    ```bash
+    uv tool run ruff format .
+    ```
 
-5. **Run your solution**
-
-Execute the solution script:
-
-```bash
-uv run -m src.dayXX.solution
-```
+  - Run your solution:
+    
+    ```bash
+    uv run -m src.dayXX.solution
+    ```
 
 ---
 
@@ -167,7 +191,21 @@ uv run -m src.dayXX.solution
 
 ### Libraries
 
-#### Recommended Libraries
+#### Libraries used
+- `beautifulsoup4`: Parses HTML for extracting puzzle descriptions.
+- `markdownify`: Converts HTML puzzle descriptions into Markdown.
+- `python-dotenv`: Manages environment variables for session configuration.
+
+#### Templates
+The project includes pre-built templates for solutions and tests:
+- `solution.py`:
+  - Uses type hints for inputs and outputs.
+  - Dynamically resolves input file paths.
+- `test_solution.py`:
+  - Includes type hints for inputs and expected outputs.
+  - Provides placeholders for example inputs and expected results.
+
+#### Recommended Libraries for future exercises
 - `networkx`: For advanced graph algorithms and visualization.
 - `sympy`: For symbolic mathematics, including prime number utilities.
 - `numpy`: For numerical computations, useful in multi-dimensional arrays.
