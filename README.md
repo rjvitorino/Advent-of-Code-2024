@@ -27,7 +27,8 @@ advent_of_code/
 │   ├── download_input.py     # Downloads input and exercise description
 │   ├── generate_day.py       # Generates day structure
 ├── README.md                 # This file
-└── pyproject.toml            # Python project configuration
+├── pyproject.toml            # Python project configuration
+└── requirements.txt          # Project requirements to run the files
 ```
 
 ---
@@ -42,11 +43,13 @@ Ensure you have Python installed and **set up a virtual environment [using uv](h
 uv pip install -r requirements.txt
 ```
 
+This will install all necessary libraries, including:
+
+* `beautifulsoup4`: For parsing HTML to extract puzzle descriptions.
+* `markdownify`: For converting HTML puzzle descriptions to Markdown.
+* `python-dotenv`: Loads environment variables from a `.env` file.
+
 ### 2. **Configure Advent of Code Session**
-
-Set your Advent of Code session cookie for downloading inputs and descriptions. You can find this in your browser's cookies after logging into the AoC website.
-
-1. Open .env and add:
 
 ```bash
 AOC_SESSION=your_session_cookie_here
