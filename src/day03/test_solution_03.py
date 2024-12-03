@@ -48,7 +48,7 @@ def example_data2() -> List[str]:
 
 
 def test_part2(example_data2: List[str]) -> None:
-    expected_result = 48    # 2*4 + 8*5
+    expected_result = 48  # 2*4 + 8*5
     result = part2(example_data2)
     print(f"Debugging: Part 2 result = {result}")
     assert result == expected_result
