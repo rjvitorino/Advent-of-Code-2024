@@ -2,6 +2,7 @@ from math import gcd
 from functools import reduce
 from typing import Callable, List, Tuple, Optional, Any
 from collections import deque
+import re
 
 
 def parse_input(file_path: str) -> List[str]:
@@ -123,3 +124,29 @@ def bfs(
             return node
         queue.extend(get_neighbors(node))
     return None
+
+
+def extract_pattern(
+    text: str, pattern: str, transform: Callable[[tuple[str, ...]], Any] = lambda x: x
+) -> list[Any]:
+    """
+    Extracts matches of a given pattern from a text and applies a transformation function to each match.
+
+    Args:
+        text (str): The input text to search.
+        pattern (str): A regular expression pattern to find matches.
+        transform (Callable): A function to transform each match tuple into the desired output format.
+
+    Returns:
+        list[Any]: A list of transformed matches.
+    """
+    compiled_pattern = re.compile(pattern)
+    matches = compiled_pattern.findall(text)
+    return [transform(match) for match in matches]
+
+
+def transform_match(match: tuple[str, str]) -> tuple[int, int]:
+    """
+    Transform regex match tuples into integers.
+    """
+    return int(match[0]), int(match[1])
