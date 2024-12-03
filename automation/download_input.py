@@ -5,6 +5,7 @@ from typing import Optional
 from bs4 import BeautifulSoup
 from markdownify import markdownify
 from dotenv import load_dotenv
+import pytz
 
 # Load environment variable(s) from .env
 load_dotenv()
@@ -73,6 +74,7 @@ def download_input(day: int) -> None:
 
 
 if __name__ == "__main__":
-    today: datetime = datetime.now()
+    local_tz = pytz.timezone("UTC")
+    today: datetime = datetime.now(tz=local_tz)
     day: int = today.day
     download_input(day)

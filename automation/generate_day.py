@@ -2,6 +2,7 @@ import os
 import shutil
 from datetime import datetime
 from typing import Optional
+import pytz
 
 
 TEMPLATE_DIR = "templates/day_template"
@@ -50,5 +51,6 @@ def generate_day(day: int, base_dir: str = "src") -> None:
 
 
 if __name__ == "__main__":
-    today = datetime.now()
+    local_tz = pytz.timezone("UTC")
+    today: datetime = datetime.now(tz=local_tz)
     generate_day(today.day)
