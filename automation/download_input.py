@@ -64,7 +64,7 @@ def download_input(day: int) -> None:
     markdown_content = markdownify(str(main_content))
     print(markdown_content)
 
-    desc_path: str = os.path.join(day_folder, "description2.md")
+    desc_path: str = os.path.join(day_folder, f"description{day}.md")
     with open(desc_path, "w") as f:
         f.write(markdown_content)
 
