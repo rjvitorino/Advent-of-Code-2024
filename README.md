@@ -64,7 +64,7 @@ advent_of_code/
 │   │   ├── solution.py           # Starter solution with type hints and structure
 │   │   └── test_solution.py      # Starter test suite with type hints
 │   │
- 
+│ 
 ├── README.md                     # This file
 ├── pyproject.toml                # Python project configuration
 └── requirements.txt              # Project requirements to run the files
