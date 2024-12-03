@@ -24,7 +24,6 @@ Welcome to my **Advent of Code 2024** repository! This project is designed to st
 
 ---
 
-
 ## Project Structure
 
 ```yaml
@@ -57,13 +56,12 @@ advent_of_code/
 │       ├── data_classes.py       # Data classes for reusable components like Grid and Point
 │       └── utils.py              # Utility functions for parsing, grid operations, etc.
 │
-├── templates/                    # Template for new days
-│   ├── day_template/
-│   │   ├── input.txt             # Empty file to store the input from the website
-│   │   ├── test_input.txt        # Empty file to store a simplified input example
-│   │   ├── solution.py           # Starter solution with type hints and structure
-│   │   └── test_solution.py      # Starter test suite with type hints
-│   │
+├── templates/
+│   └── day_template/             # Template for new days
+│       ├── input.txt             # Empty file to store the input from the website
+│       ├── test_input.txt        # Empty file to store a simplified input example
+│       ├── solution.py           # Starter solution with type hints and structure
+│       └── test_solution.py      # Starter test suite with type hints
 │ 
 ├── README.md                     # This file
 ├── pyproject.toml                # Python project configuration
@@ -76,7 +74,7 @@ advent_of_code/
 
 ### 1. **Install Dependencies**
 
-Ensure you have Python installed and **set up a virtual environment [using uv](https://docs.astral.sh/uv/)**. Install the dependencies:
+Ensure you install Python and **set up a virtual environment [using uv](https://docs.astral.sh/uv/)**. Install the dependencies:
 
 ```bash
 uv pip install -r requirements.txt
@@ -90,7 +88,7 @@ This will install all necessary libraries, including:
 
 ### 2. **Configure Advent of Code Session**
 
-- Set your Advent of Code session cookie for downloading inputs and descriptions. 
+- Set your Advent of Code **session cookie** to download inputs and descriptions. 
 You can find this in your browser's cookies after logging into the AoC website.
 - Ensure the `.env` file is placed in the **root directory** of the project, where the `automation/` folder is located with the following content:
 
@@ -226,7 +224,7 @@ This script performs the following:
 
 #### Techniques for Optimization
 - **Efficient Counting:**
-  - Use `collections.Counter` for counting occurrences in lists or strings.
+  - Use `collections.Counter` to count occurrences in lists or strings.
 - **Prime Numbers:**
   - Use `sympy` or implement Sieve of Eratosthenes for prime number generation.
 
