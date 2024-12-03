@@ -1,6 +1,6 @@
 from typing import List, Tuple
 import pytest
-from .solution import (
+from .day01_solution import (
     part1,
     part2,
     parse_location_ids,
