@@ -145,7 +145,7 @@ def extract_pattern(
     return [transform(match) for match in matches]
 
 
-def transform_match(match: tuple[str, str]) -> tuple[int, int]:
+def convert_str_tuple_to_int(match: tuple[str, str]) -> tuple[int, int]:
     """
     Transform regex match tuples into integers.
     """

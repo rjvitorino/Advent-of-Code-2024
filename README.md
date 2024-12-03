@@ -189,6 +189,9 @@ This script performs the following:
   - `lcmm(numbers)`: Computes the least common multiple of a list of integers.
 - **Graph Traversals:**
   - `bfs(start, is_goal, get_neighbors)`: Implements Breadth-First Search (BFS) to find a goal node.
+- **Regex extractions and transformations:**
+  - `extract_pattern`: Extracts text and transforms it based on a regular expression.
+  - `convert_str_tuple_to_int`: Converts content matched from a regular expression (string tuples) into integers for easier handling.
 
 ---
 
@@ -303,6 +306,7 @@ neighbor_coords = neighbors(2, 2, include_diagonals=True)
 ---
 
 ## Contributing
+
 Feel free to contribute by adding:
 * New utilities for solving puzzles.
 * Optimizations for existing solutions.

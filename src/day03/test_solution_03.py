@@ -1,6 +1,6 @@
 import pytest
 from typing import List
-from shared.utils import extract_pattern, transform_match
+from shared.utils import extract_pattern, convert_str_tuple_to_int
 from .day03_solution import extract_valid_mul_instructions, part1, part2
 
 
@@ -28,7 +28,7 @@ def test_extract_pattern() -> None:
     text = "mul(2,4)mul(3,5)invalid(6,7)"
     pattern = r"mul\((\d+),(\d+)\)"
     expected = [(2, 4), (3, 5)]
-    assert extract_pattern(text, pattern, transform_match) == expected
+    assert extract_pattern(text, pattern, convert_str_tuple_to_int) == expected
 
 
 def test_part1(example_data: List[str]) -> None:

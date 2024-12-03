@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import List, Tuple
 import re
 
-from shared.utils import extract_pattern, transform_match
+from shared.utils import extract_pattern, convert_str_tuple_to_int
 
 
 def extract_valid_mul_instructions(memory: str) -> list[tuple[int, int]]:
@@ -11,7 +11,7 @@ def extract_valid_mul_instructions(memory: str) -> list[tuple[int, int]]:
     Returns a list of tuples (X, Y) representing the operands.
     """
     pattern = r"mul\((\d+),(\d+)\)"
-    return extract_pattern(memory, pattern, transform_match)
+    return extract_pattern(memory, pattern, convert_str_tuple_to_int)
 
 
 def extract_valid_state_mul_instructions(
