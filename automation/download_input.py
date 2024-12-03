@@ -10,12 +10,16 @@ import pytz
 # Load environment variable(s) from .env
 load_dotenv()
 
+# Determine the base directory dynamically
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
+
 AOC_YEAR: int = 2024
 SESSION_COOKIE: Optional[str] = os.getenv("AOC_SESSION")
 BASE_URL: str = f"https://adventofcode.com/{AOC_YEAR}/day"
 
 
-def download_input(day: int) -> None:
+def download_input(day: int, base_dir: Optional[str] = None) -> None:
     """
     Downloads the input and description for a specific Advent of Code day.
 
@@ -29,6 +33,9 @@ def download_input(day: int) -> None:
     if not SESSION_COOKIE:
         raise ValueError("AOC_SESSION environment variable is not set.")
 
+    if base_dir is None:
+        base_dir = os.path.join(PROJECT_DIR, "src")
+
     headers = {"Cookie": f"session={SESSION_COOKIE}"}
     input_url: str = f"{BASE_URL}/{day}/input"
     desc_url: str = f"{BASE_URL}/{day}"
@@ -40,7 +47,7 @@ def download_input(day: int) -> None:
     input_data: str = response.text
 
     # Create day folder for the code
-    day_folder: str = f"src/day{day:02d}"
+    day_folder: str = os.path.join(base_dir, f"day{day:02d}")
     os.makedirs(day_folder, exist_ok=True)
 
     # Save input file
@@ -63,7 +70,7 @@ def download_input(day: int) -> None:
 
     # Convert HTML to Markdown
     markdown_content = markdownify(str(main_content))
-    print(markdown_content)
+    # print(markdown_content)
 
     desc_path: str = os.path.join(day_folder, f"description{day}.md")
     with open(desc_path, "w") as f:

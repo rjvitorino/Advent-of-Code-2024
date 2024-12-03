@@ -5,10 +5,13 @@ from typing import Optional
 import pytz
 
 
-TEMPLATE_DIR = "templates/day_template"
+# Determine the base directory dynamically
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
+TEMPLATE_DIR = os.path.join(PROJECT_DIR, "templates", "day_template")
 
 
-def generate_day(day: int, base_dir: str = "src") -> None:
+def generate_day(day: int, base_dir: Optional[str] = None) -> None:
     """
     Generates the folder and files for a specific day of Advent of Code.
 
@@ -19,6 +22,9 @@ def generate_day(day: int, base_dir: str = "src") -> None:
     Returns:
         None
     """
+    if base_dir is None:
+        base_dir = os.path.join(PROJECT_DIR, "src")
+
     # Ensure the day number is zero-padded
     day_str = f"day{day:02d}"
     day_folder = os.path.join(base_dir, day_str)
