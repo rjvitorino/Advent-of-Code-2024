@@ -2,15 +2,24 @@
 
 Welcome to my **Advent of Code 2024** repository! This project is designed to streamline solving AoC puzzles using Python, focusing on **code reuse**, **automation**, and **testing**.
 
+![Python Version](https://img.shields.io/badge/python-3.13+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Tests](https://img.shields.io/badge/tests-pytest-yellow.svg)
+
+
 ---
 
 ## Table of Contents
 
 - [Project Structure](#project-structure)
 - [Setup](#setup)
-  - [Install Dependencies](#1-install-dependencies)
-  - [Configure Advent of Code Session](#2-configure-advent-of-code-session)
-  - [Run Automation Scripts](#3-run-automation-scripts)
+  - [Prerequisites](#prerequisites)
+  - [Quickstart](#quickstart)
+  - [Step-by-step instructions](#step-by-step-instructions)
+      - [Install Dependencies](#1-install-dependencies)
+      - [Configure Cookie Session](#2-configure-advent-of-code-session)
+      - [Run Automation Scripts](#3-run-automation-scripts)
+  - [Troubleshooting](#troubleshooting)
 - [How to Solve a Day](#how-to-solve-a-day)
 - [Tools and Techniques](#tools-and-techniques)
   - [Data Structures and Utilities](#data-structures-and-utilities)
@@ -24,32 +33,36 @@ Welcome to my **Advent of Code 2024** repository! This project is designed to st
 
 ---
 
-## Implemented Days
+## 🎄 Progress Tracker (2024) 🎅
 <!-- IMPLEMENTED_DAYS -->
-- [x] Day 01
-- [x] Day 02
-- [x] Day 03
-- [ ] Day 04
-- [ ] Day 05
-- [ ] Day 06
-- [ ] Day 07
-- [ ] Day 08
-- [ ] Day 09
-- [ ] Day 10
-- [ ] Day 11
-- [ ] Day 12
-- [ ] Day 13
-- [ ] Day 14
-- [ ] Day 15
-- [ ] Day 16
-- [ ] Day 17
-- [ ] Day 18
-- [ ] Day 19
-- [ ] Day 20
-- [ ] Day 21
-- [ ] Day 22
-- [ ] Day 23
-- [ ] Day 24
+**Stars Collected**: 6/50 ⭐️
+**Days Completed**: 3/25 🎄
+
+- [x] ⭐️ **Day 01**
+- [x] ⭐️ **Day 02**
+- [x] ⭐️ **Day 03**
+- [ ] ❄️ Day 04
+- [ ] ❄️ Day 05
+- [ ] ❄️ Day 06
+- [ ] ❄️ Day 07
+- [ ] ❄️ Day 08
+- [ ] ❄️ Day 09
+- [ ] ❄️ Day 10
+- [ ] ❄️ Day 11
+- [ ] ❄️ Day 12
+- [ ] ❄️ Day 13
+- [ ] ❄️ Day 14
+- [ ] ❄️ Day 15
+- [ ] ❄️ Day 16
+- [ ] ❄️ Day 17
+- [ ] ❄️ Day 18
+- [ ] ❄️ Day 19
+- [ ] ❄️ Day 20
+- [ ] ❄️ Day 21
+- [ ] ❄️ Day 22
+- [ ] ❄️ Day 23
+- [ ] ❄️ Day 24
+- [ ] ❄️ Day 25
 <!-- END_IMPLEMENTED_DAYS -->
 
 ## Project Structure
@@ -100,7 +113,24 @@ advent_of_code/
 
 ## Setup
 
-### 1. **Install Dependencies**
+### Prerequisites
+- Python 3.13 or higher
+- UV package manager
+- Git
+
+### Quickstart
+
+```bash
+gh repo clone rjvitorino/advent-of-code-2024
+cd advent_of_code
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -r requirements.txt
+```
+
+### Step-by-step instructions
+
+#### 1. Install Dependencies
 
 Ensure you install Python and **set up a virtual environment [using uv](https://docs.astral.sh/uv/)**. Install the dependencies:
 
@@ -114,7 +144,7 @@ This will install all necessary libraries, including:
 * `markdownify`: For converting HTML puzzle descriptions to Markdown.
 * `python-dotenv`: Loads environment variables from a `.env` file.
 
-### 2. **Configure Advent of Code Session**
+#### 2. Configure Advent of Code Session
 
 - Set your Advent of Code **session cookie** to download inputs and descriptions. 
 You can find this in your browser's cookies after logging into the AoC website.
@@ -130,7 +160,7 @@ AOC_SESSION=your_session_cookie_here
 export AOC_SESSION=your_session_cookie_here
 ```
 
-### 3, Run Automation Scripts
+#### 3. Run Automation Scripts
 
 1. **Generate folder structure for a day in the Advent of Code:**
 
@@ -149,12 +179,33 @@ This script performs the following:
 * Downloads the puzzle input and saves it as `input.txt`.
 * Dynamically generates the Markdown description as `description{day}.md` based on the day number.
 
+3. **Dynamically update README with implemented days:**
+
+```bash
+uv run python automation/update_readme_days.py
+```
+
+This script performs the following:
+
+- Generates a list of all 24 Advent of Code days (Day 01 to Day 25).
+- Checks which days are implemented by looking for corresponding `src/dayXX` folders.
+- Updates the `README.md` under the "[**Progress Tracker**](#-progress-tracker-2024-)" section:
+  - Marks completed days with a star emoji (⭐️) and a checkmark ([x]).
+  - Marks incomplete days with a snowflake emoji (❄️) and an empty checkbox ([ ]).
+  - Calculates the 
+
+
+
+
+### Troubleshooting
+- **Session Cookie Issues**: Make sure your session cookie is valid and properly formatted
+- **UV Installation**: If UV isn't recognized, ensure it's properly installed...
 
 ---
 
 ## How to solve a day in the Advent of Code
 
-### 1. **Write your solution**
+### 1. Write your solution
 
   - Implement the solution in `src/dayXX/dayXX_solution.py`, using **type hints** and reusable **utilities** to ensure clarity and consistency.
   - Type hints help catch bugs early and provide better IDE support.
@@ -168,7 +219,7 @@ This script performs the following:
       pass
     ```
 
-### 2. **Write your tests**
+### 2. Write your tests
 
   - Create test cases in `src/dayXX/test_solution_XX.py`, using type hints and the provided template.
   - Example:
@@ -180,7 +231,7 @@ This script performs the following:
         assert part1(example_input) == expected_result
     ```
 
-### 3. **Run and validate your code**
+### 3. Run and validate your code
 
   - Test your solution with `pytest`:
 
