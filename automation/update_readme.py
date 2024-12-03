@@ -56,8 +56,8 @@ def update_readme_with_days(readme_path: str, src_path: str) -> None:
 
     # Create the summary text
     summary_text = (
-        f"**Stars Collected**: {stars_collected}/50 ⭐️\n"
-        f"**Days Completed**: {days_completed}/25 🎄\n\n"
+        f"* **Stars Collected**: {stars_collected}/50 ⭐️\n"
+        f"* **Days Completed**: {days_completed}/25 🎄\n\n"
     )
 
     # Read the current content of the README file
