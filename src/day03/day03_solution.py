@@ -77,18 +77,19 @@ def part2(data: List[str]) -> int:
     for instr, x, y in instructions:
         if instr == "do":
             mul_enabled = True
-            print("Debugging: do() encountered, mul_enabled = True")
+            # print("Debugging: do() encountered, mul_enabled = True")
         elif instr == "don't":
             mul_enabled = False
-            print("Debugging: don't() encountered, mul_enabled = False")
+            # print("Debugging: don't() encountered, mul_enabled = False")
         elif instr == "mul":
             if mul_enabled:
-                print(f"Debugging: mul({x}, {y}) executed, adding {x * y} to total")
+                # print(f"Debugging: mul({x}, {y}) executed, adding {x * y} to total")
                 total += x * y
             else:
-                print(f"Debugging: mul({x}, {y}) skipped, mul_enabled = False")
+                # print(f"Debugging: mul({x}, {y}) skipped, mul_enabled = False")
+                pass
 
-    print(f"Debugging: Final total = {total}")
+    # print(f"Debugging: Final total = {total}")
     return total
 
 
