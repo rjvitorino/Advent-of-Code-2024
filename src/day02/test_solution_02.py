@@ -1,5 +1,5 @@
 import pytest
-from solution import is_safe, can_be_safe_with_removal, part1, part2
+from .day02_solution import is_safe, can_be_safe_with_removal, part1, part2
 
 
 @pytest.mark.parametrize(
