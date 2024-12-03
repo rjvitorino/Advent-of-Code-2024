@@ -1,4 +1,5 @@
-from math import gcd
+# from math import gcd
+from math import lcm
 from functools import reduce
 from typing import Callable, List, Tuple, Optional, Any
 from collections import deque
@@ -68,20 +69,6 @@ def neighbors(x: int, y: int, include_diagonals: bool = False) -> List[Tuple[int
     if include_diagonals:
         offsets += [(-1, -1), (-1, 1), (1, -1), (1, 1)]
     return [(x + dx, y + dy) for dx, dy in offsets]
-
-
-def lcm(a: int, b: int) -> int:
-    """
-    Computes the least common multiple of two integers.
-
-    Args:
-        a (int): The first integer.
-        b (int): The second integer.
-
-    Returns:
-        int: The least common multiple of a and b.
-    """
-    return abs(a * b) // gcd(a, b)
 
 
 def lcmm(numbers: List[int]) -> int:
