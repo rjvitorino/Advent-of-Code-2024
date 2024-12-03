@@ -29,27 +29,45 @@ Welcome to my **Advent of Code 2024** repository! This project is designed to st
 
 ```yaml
 advent_of_code/
-├── .vscode/                  # VS Code settings
-├── .env                      # Environment configuration for UV
-├── src/                      # Source code for each day
+├── .vscode/                      # VS Code settings
+├── .env                          # Environment configuration for UV
+│
+├── automation/                   # Automation scripts
+│   ├── download_input.py         # Downloads input and exercise description from the website
+│   └── generate_day.py           # Generates day structure for each day in the Advent of Code
+│
+├── src/                          # Source code for each day
 │   ├── day01/
-│   │   ├── input.txt         # Puzzle input
-│   │   ├── test_input.txt    # Example input for tests
-│   │   ├── solution.py       # Solution file
-│   │   ├── test_solution.py  # Unit tests
-│   └── shared/               # Shared utilities and data classes
-├── templates/                # Template for new days
+│   │   ├── __init__.py           # Python module initialization
+│   │   ├── day01_solution.py     # Solution file with a consistent naming convention
+│   │   ├── description1.md       # Puzzle description in markdown
+│   │   ├── input.txt             # Puzzle input
+│   │   ├── test_input.txt        # Example input for tests
+│   │   ├── test_solution_01.py   # Unit tests for day 01
+│   ├── day02/
+│   │   ├── __init__.py           # Python module initialization
+│   │   ├── day02_solution.py     # Solution file for day 02
+│   │   └── ...
+│   ├── dayXX/
+│   │   ├── __init__.py           # Python module initialization
+│   │   ├── dayXX_solution.py     # Solution file for day XX
+│   │   └── ...
+│   │
+│   └── shared/                   # Shared utilities and data classes
+│       ├── data_classes.py       # Data classes for reusable components like Grid and Point
+│       └── utils.py              # Utility functions for parsing, grid operations, etc.
+│
+├── templates/                    # Template for new days
 │   ├── day_template/
-│   │   ├── input.txt         # Empty file to store the input from the website
-│   │   ├── test_input.txt    # Empty file to store a simplified input example
-│   │   ├── solution.py       # Starter solution with type hints and structure
-│   │   ├── test_solution.py  # Starter test suite with type hints
-├── automation/               # Automation scripts
-│   ├── download_input.py     # Downloads input and exercise description
-│   ├── generate_day.py       # Generates day structure
-├── README.md                 # This file
-├── pyproject.toml            # Python project configuration
-└── requirements.txt          # Project requirements to run the files
+│   │   ├── input.txt             # Empty file to store the input from the website
+│   │   ├── test_input.txt        # Empty file to store a simplified input example
+│   │   ├── solution.py           # Starter solution with type hints and structure
+│   │   └── test_solution.py      # Starter test suite with type hints
+│   │
+ 
+├── README.md                     # This file
+├── pyproject.toml                # Python project configuration
+└── requirements.txt              # Project requirements to run the files
 ```
 
 ---
@@ -103,7 +121,8 @@ uv run python automation/download_input.py
 This script performs the following:
 
 * Downloads the puzzle input and saves it as `input.txt`.
-* Extracts the `<main>` content from the puzzle description and saves it as `description.md`, converted into the Markdown format.
+* Dynamically generates the Markdown description as `description{day}.md` based on the day number.
+
 
 ---
 
@@ -111,7 +130,7 @@ This script performs the following:
 
 ### 1. **Write your solution**
 
-  - Implement the solution in `src/dayXX/solution.py`, using **type hints** and reusable **utilities** to ensure clarity and consistency.
+  - Implement the solution in `src/dayXX/dayXX_solution.py`, using **type hints** and reusable **utilities** to ensure clarity and consistency.
   - Type hints help catch bugs early and provide better IDE support.
   - Example:
 
@@ -125,7 +144,7 @@ This script performs the following:
 
 ### 2. **Write your tests**
 
-  - Create test cases in `src/dayXX/test_solution.py`, using type hints and the provided template.
+  - Create test cases in `src/dayXX/test_solution_XX.py`, using type hints and the provided template.
   - Example:
 
     ```python
