@@ -1,11 +1,8 @@
 # 🎅 Advent of Code 2024 - Python Setup 🐍
 
+![Python Version](https://img.shields.io/badge/python-3.13+-blue.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg) ![Tests](https://img.shields.io/badge/tests-pytest-yellow.svg)
+
 Welcome to my **Advent of Code 2024** repository! This project is designed to streamline solving AoC puzzles using Python, focusing on **code reuse**, **automation**, and **testing**.
-
-![Python Version](https://img.shields.io/badge/python-3.13+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Tests](https://img.shields.io/badge/tests-pytest-yellow.svg)
-
 
 ---
 
@@ -20,23 +17,23 @@ Welcome to my **Advent of Code 2024** repository! This project is designed to st
       - [Configure Cookie Session](#2-configure-advent-of-code-session)
       - [Run Automation Scripts](#3-run-automation-scripts)
   - [Troubleshooting](#troubleshooting)
+  - [Common Commands](#common-commands)
 - [How to Solve a Day](#how-to-solve-a-day)
 - [Tools and Techniques](#tools-and-techniques)
   - [Data Structures and Utilities](#data-structures-and-utilities)
   - [Algorithms](#algorithms)
-  - [Libraries](#libraries)
-  - [Templates](#templates)
-  - [Recommended Libraries for Future Exercises](#recommended-libraries-for-future-exercises)
-- [Developer Tips](#developer-tips)
-- [Contributing](#contributing)
+  - [Libraries and Templates](#libraries)
+  - [Example Usage](#example-usage)
+- [Developer Guides](#developer-guides)
+- [Acknowledgements](#acknowledgements)
 - [License](#license)
 
 ---
 
 ## 🎄 Progress Tracker (2024) 🎅
 <!-- IMPLEMENTED_DAYS -->
-**Stars Collected**: 6/50 ⭐️
-**Days Completed**: 3/25 🎄
+* **Stars Collected**: 6/50 ⭐️
+* **Days Completed**: 3/25 🎄
 
 - [x] ⭐️ **Day 01**
 - [x] ⭐️ **Day 02**
@@ -74,7 +71,8 @@ advent_of_code/
 │
 ├── automation/                   # Automation scripts
 │   ├── download_input.py         # Downloads input and exercise description from the website
-│   └── generate_day.py           # Generates day structure for each day in the Advent of Code
+│   ├── generate_day.py           # Generates day structure for each day in the Advent of Code
+│   └── update_readme.py          # Updates README with progress tracking information (completed AoC days)
 │
 ├── src/                          # Source code for each day
 │   ├── day01/
@@ -104,7 +102,7 @@ advent_of_code/
 │       ├── solution.py           # Starter solution with type hints and structure
 │       └── test_solution.py      # Starter test suite with type hints
 │ 
-├── README.md                     # This file
+├── README.md                     # This file you are reading :)
 ├── pyproject.toml                # Python project configuration
 └── requirements.txt              # Project requirements to run the files
 ```
@@ -118,6 +116,8 @@ advent_of_code/
 - UV package manager
 - Git
 
+---
+
 ### Quickstart
 
 ```bash
@@ -128,7 +128,9 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 uv pip install -r requirements.txt
 ```
 
-### Step-by-step instructions
+---
+
+### Step-by-step Instructions
 
 #### 1. Install Dependencies
 
@@ -190,16 +192,34 @@ This script performs the following:
 - Generates a list of all 24 Advent of Code days (Day 01 to Day 25).
 - Checks which days are implemented by looking for corresponding `src/dayXX` folders.
 - Updates the `README.md` under the "[**Progress Tracker**](#-progress-tracker-2024-)" section:
-  - Marks completed days with a star emoji (⭐️) and a checkmark ([x]).
-  - Marks incomplete days with a snowflake emoji (❄️) and an empty checkbox ([ ]).
-  - Calculates the 
+  - Marks completed days with a **star emoji** (⭐️) and a checkmark (`[x]`).
+  - Marks incomplete days with a **snowflake emoji** (❄️) and an empty checkbox (`[ ]`).
+  - Calculates the number of stars collected and days completed based on the repo folders.
 
-
-
+---
 
 ### Troubleshooting
+
 - **Session Cookie Issues**: Make sure your session cookie is valid and properly formatted
 - **UV Installation**: If UV isn't recognized, ensure it's properly installed...
+
+---
+
+### Common Commands
+
+```bash
+# Run tests for a specific day
+uv tool run pytest src/day01
+
+# Run all tests
+uv tool run pytest
+
+# Format code
+uv tool run ruff format .
+
+# Check linting
+uv tool run ruff check .
+```
 
 ---
 
@@ -364,7 +384,7 @@ neighbor_coords = neighbors(2, 2, include_diagonals=True)
 
 ---
 
-## Developer Tips
+## Developer Guides
 
 1. **Code Reusability**
     * Place shared utility functions (e.g., parsing, math utilities) in `src/shared/`.
@@ -379,7 +399,7 @@ neighbor_coords = neighbors(2, 2, include_diagonals=True)
 
 ---
 
-## Automation Worflow
+### Automation Worflow
 
 1. **Daily Automation**
 
@@ -401,12 +421,31 @@ neighbor_coords = neighbors(2, 2, include_diagonals=True)
 
 ---
 
-## Contributing
+### Contributing
 
 Feel free to contribute by adding:
 * New utilities for solving puzzles.
 * Optimizations for existing solutions.
 * Tests or enhancements to the automation scripts.
+
+---
+
+### Feedback and Support
+
+Found a bug? Have a suggestion for improving the project structure or automation tools? Your feedback is valuable! 
+
+- Open an issue to report bugs or suggest improvements
+- Start a discussion if you have questions about the project setup
+- Share your experience using these tools for your own AoC solutions
+
+Your input helps make this project better for everyone tackling Advent of Code challenges! 🎄
+
+---
+
+## Acknowledgments
+
+- [Advent of Code](https://adventofcode.com/) - For creating these wonderful puzzles
+- The Python community for the amazing libraries 🐍
 
 ---
 
