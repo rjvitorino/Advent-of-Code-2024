@@ -22,7 +22,7 @@ uv.lock
 *.pytest_cache
 
 # Test input/output files
-src/**/test_input.txt
+# src/**/test_input.txt
 # src/**/description.md
 
 # Logs and other runtime files
