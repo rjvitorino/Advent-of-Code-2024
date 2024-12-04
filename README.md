@@ -8,25 +8,28 @@ Welcome to my **Advent of Code 2024** repository! This project is designed to st
 
 ## Table of Contents
 
-- [Project Structure](#project-structure)
-- [Setup](#setup)
+- [🗂️ Project Structure](#project-structure)
+- [⚙️ Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Quickstart](#quickstart)
   - [Step-by-step instructions](#step-by-step-instructions)
-      - [Install Dependencies](#1-install-dependencies)
-      - [Configure Cookie Session](#2-configure-advent-of-code-session)
-      - [Run Automation Scripts](#3-run-automation-scripts)
+      - [Install dependencies](#1-install-dependencies)
+      - [Configure cookie session](#2-configure-advent-of-code-session)
+      - [Run automation scripts](#3-run-automation-scripts)
+- [👨🏻‍💻 How to solve a day in the AoC](#how-to-solve-a-day-in-the-advent-of-code)
   - [Troubleshooting](#troubleshooting)
   - [Common Commands](#common-commands)
-- [How to Solve a Day](#how-to-solve-a-day)
-- [Tools and Techniques](#tools-and-techniques)
+- [🧰 Tools and Techniques](#tools-and-techniques)
   - [Data Structures and Utilities](#data-structures-and-utilities)
   - [Algorithms](#algorithms)
   - [Libraries and Templates](#libraries)
   - [Example Usage](#example-usage)
-- [Developer Guides](#developer-guides)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
+- [⚠️ Developer Guides](#developer-guides)
+  - [Automation Workflow](#automation-workflow)
+  - [Contributing](#contributing)
+  - [Feedback and Support](#feedback-and-support)
+- [🙌 Acknowledgements](#acknowledgements)
+- [📃 License](#license)
 
 ---
 
@@ -184,45 +187,17 @@ This script performs the following:
 3. **Dynamically update README with implemented days:**
 
 ```bash
-uv run python automation/update_readme_days.py
+uv run python automation/update_readme.py
 ```
 
 This script performs the following:
 
 - Generates a list of all 24 Advent of Code days (Day 01 to Day 25).
 - Checks which days are implemented by looking for corresponding `src/dayXX` folders.
-- Updates the `README.md` under the "[**Progress Tracker**](#-progress-tracker-2024-)" section:
+- Updates the `README.md` under the "[Progress Tracker](#-progress-tracker-2024-)" section:
   - Marks completed days with a **star emoji** (⭐️) and a checkmark (`[x]`).
   - Marks incomplete days with a **snowflake emoji** (❄️) and an empty checkbox (`[ ]`).
   - Calculates the number of stars collected and days completed based on the repo folders.
-
----
-
-### Troubleshooting
-
-- **Session Cookie Issues**: Make sure your session cookie is valid and properly formatted
-- **UV Installation**: If UV isn't recognized, ensure it's properly installed...
-
----
-
-### Common Commands
-
-```bash
-# Run tests for a specific day
-uv tool run pytest src/day01
-
-# Run all tests
-uv tool run pytest
-
-# Format code
-uv tool run ruff format .
-
-# Check linting
-uv tool run ruff check .
-
-# Run a specific solution
-uv run -m src.dayXX.dayXX_solution
-```
 
 ---
 
@@ -279,6 +254,34 @@ uv run -m src.dayXX.dayXX_solution
     ```bash
     uv run -m src.dayXX.solution
     ```
+
+---
+
+### Troubleshooting
+
+- **Session Cookie Issues**: Make sure your session cookie is valid and properly formatted
+- **UV Installation**: If UV isn't recognized, ensure it's properly installed...
+
+---
+
+### Common Commands
+
+```bash
+# Run tests for a specific day
+uv tool run pytest src/day01
+
+# Run all tests
+uv tool run pytest
+
+# Format code
+uv tool run ruff format .
+
+# Check linting
+uv tool run ruff check .
+
+# Run a specific solution
+uv run -m src.dayXX.dayXX_solution
+```
 
 ---
 
@@ -402,7 +405,7 @@ neighbor_coords = neighbors(2, 2, include_diagonals=True)
 
 ---
 
-### Automation Worflow
+### Automation Workflow
 
 1. **Daily Automation**
 
@@ -445,7 +448,7 @@ Your input helps make this project better for everyone tackling Advent of Code c
 
 ---
 
-## Acknowledgments
+## Acknowledgements
 
 - [Advent of Code](https://adventofcode.com/) - For creating these wonderful puzzles
 - The Python community for the amazing libraries 🐍
