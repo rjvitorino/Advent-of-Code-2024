@@ -219,6 +219,9 @@ uv tool run ruff format .
 
 # Check linting
 uv tool run ruff check .
+
+# Run a specific solution
+uv run -m src.dayXX.dayXX_solution
 ```
 
 ---
