@@ -73,7 +73,7 @@ htmlcov/
 docker-compose.override.yml
 
 # Ignore downloaded inputs if needed
-src/**/input.txt
+# src/**/input.txt
 
 # Helper for GPTs (:
 PROMPT.md
