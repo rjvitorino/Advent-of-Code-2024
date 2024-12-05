@@ -1,5 +1,6 @@
+from collections import defaultdict, deque
 from dataclasses import dataclass
-from typing import Callable, List, Tuple, Optional, Any
+from typing import List, Tuple, Any, Dict
 
 
 @dataclass
@@ -186,3 +187,90 @@ class Range:
             bool: True if the value is in the range, False otherwise.
         """
         return self.start <= value <= self.end
+
+
+@dataclass
+class TopologicalSorter:
+    """
+    A utility class for performing topological sorting on a directed acyclic graph (DAG).
+
+    Attributes:
+        graph (Dict[int, List[int]]): Adjacency list representation of the graph, where
+                                      each key is a node, and its value is a list of nodes
+                                      it points to (its neighbors).
+        in_degree (Dict[int, int]): Tracks the in-degree (number of incoming edges) for each node.
+                                    Nodes with an in-degree of 0 have no dependencies.
+    """
+
+    graph: Dict[int, List[int]] = None
+    in_degree: Dict[int, int] = None
+
+    def __post_init__(self):
+        """
+        Initializes the graph and in-degree map as default dictionaries. The graph uses a list
+        for neighbors, and the in-degree map tracks the number of incoming edges for each node.
+        """
+        self.graph = defaultdict(list)
+        self.in_degree = defaultdict(int)
+
+    def add_edge(self, x: int, y: int) -> None:
+        """
+        Adds a directed edge from node `x` to node `y` in the graph.
+
+        This represents a dependency where `x` must come before `y` in the sorted order.
+
+        Args:
+            x (int): The source node.
+            y (int): The target node.
+        """
+        self.graph[x].append(y)  # Add `y` as a neighbor of `x`
+        self.in_degree[y] += 1  # Increment the in-degree of `y`
+        self.in_degree.setdefault(x, 0)  # Ensure `x` is in the in-degree map
+
+    def sort(self, nodes: List[int]) -> List[int]:
+        """
+        Performs topological sorting on the graph to determine a valid ordering of nodes.
+
+        The sorting respects all dependencies, ensuring that for every edge `x -> y`,
+        node `x` appears before node `y` in the output.
+
+        Args:
+            nodes (List[int]): The list of all nodes to sort. Nodes not in this list are ignored.
+
+        Returns:
+            List[int]: The nodes sorted in topological order. If there are multiple valid orders,
+                       the result will be deterministic due to sorting.
+
+        Raises:
+            ValueError: If the graph contains a cycle, making topological sorting impossible.
+
+        Algorithm:
+        - Build a queue of nodes with in-degree 0 (nodes with no dependencies).
+        - Iteratively process each node from the queue:
+            - Add it to the sorted result.
+            - Decrement the in-degree of its neighbors.
+            - Add neighbors with in-degree 0 to the queue.
+        - If the total processed nodes is less than the total input nodes, a cycle exists.
+        """
+        # Find all nodes with zero in-degree and initialize the processing queue
+        queue = deque(sorted(node for node in nodes if self.in_degree[node] == 0))
+        sorted_nodes = []  # To store the topological order
+
+        while queue:
+            # Process the next node in the queue
+            node = queue.popleft()
+            sorted_nodes.append(node)
+
+            # Decrease the in-degree of all neighbors
+            for neighbor in self.graph[node]:
+                self.in_degree[neighbor] -= 1
+                # If a neighbor now has zero in-degree, add it to the queue
+                if self.in_degree[neighbor] == 0:
+                    queue.append(neighbor)
+                    queue = deque(sorted(queue))  # Maintain deterministic order
+
+        # If not all nodes are in the sorted list, a cycle exists in the graph
+        if len(sorted_nodes) != len(nodes):
+            raise ValueError("Cycle detected in the graph")
+
+        return sorted_nodes
