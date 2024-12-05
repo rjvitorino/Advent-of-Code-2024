@@ -35,14 +35,14 @@ Welcome to my **Advent of Code 2024** repository! This project is designed to st
 
 ## 🎄 Progress Tracker (2024) 🎅
 <!-- IMPLEMENTED_DAYS -->
-* **Stars Collected**: 8/50 ⭐️
-* **Days Completed**: 4/25 🎄
+* **Stars Collected**: 10/50 ⭐️
+* **Days Completed**: 5/25 🎄
 
 - [x] ⭐️ **Day 01**
 - [x] ⭐️ **Day 02**
 - [x] ⭐️ **Day 03**
 - [x] ⭐️ **Day 04**
-- [ ] ❄️ Day 05
+- [x] ⭐️ **Day 05**
 - [ ] ❄️ Day 06
 - [ ] ❄️ Day 07
 - [ ] ❄️ Day 08
